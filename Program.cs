@@ -24,8 +24,8 @@ namespace ApiDeTarefas
                 });
             });
 
-            builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
-            builder.Services.AddScoped<ITarefaService, TarefaService>();
+            builder.Services.AddSingleton<ITarefaRepository, TarefaRepository>();
+            builder.Services.AddSingleton<ITarefaService, TarefaService>();
 
             builder.Services.AddEndpointsApiExplorer();
 
