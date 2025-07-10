@@ -11,13 +11,14 @@ namespace ApiDeTarefas
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
             builder.Services.AddOpenApi();
 
             builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
             builder.Services.AddScoped<ITarefaService, TarefaService>();
+
+            builder.Services.AddEndpointsApiExplorer();
 
             var app = builder.Build();
 
