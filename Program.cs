@@ -1,4 +1,7 @@
 
+using ApiDeTarefas.Repositories;
+using ApiDeTarefas.Services;
+
 namespace ApiDeTarefas
 {
     public class Program
@@ -12,6 +15,9 @@ namespace ApiDeTarefas
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
+            builder.Services.AddScoped<ITarefaService, TarefaService>();
 
             var app = builder.Build();
 
