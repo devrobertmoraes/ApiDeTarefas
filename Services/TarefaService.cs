@@ -1,5 +1,6 @@
 ﻿using ApiDeTarefas.Entities;
 using ApiDeTarefas.Repositories;
+using ApiDeTarefas.Models;
 
 namespace ApiDeTarefas.Services
 {
@@ -40,15 +41,21 @@ namespace ApiDeTarefas.Services
             return _tarefaRepository.ObterPorId(id);
         }
 
-        public void MarcarComoConcluida(int id, bool concluida)
+        public Tarefa AtualizarTarefa(int id, TarefaAtualizacaoModel model)
         {
             Tarefa tarefaExistente = _tarefaRepository.ObterPorId(id);
 
-            if (tarefaExistente != null)
+            if (tarefaExistente == null)
             {
-                tarefaExistente.Concluida = concluida;
-                _tarefaRepository.Atualizar(tarefaExistente);
+                return null;
             }
+
+            tarefaExistente.Titulo = model.Titulo;
+            tarefaExistente.Concluida = model.Concluida;
+
+            _tarefaRepository.Atualizar(tarefaExistente);
+
+            return tarefaExistente;
         }
 
         public bool RemoverTarefa(int id)

@@ -1,4 +1,5 @@
 ﻿using ApiDeTarefas.Entities;
+using ApiDeTarefas.Models;
 
 namespace ApiDeTarefas.Services
 {
@@ -7,7 +8,7 @@ namespace ApiDeTarefas.Services
         Tarefa CriarTarefa(string titulo);
         List<Tarefa> ObterTodas();
         Tarefa ObterPorId(int id);
-        void MarcarComoConcluida(int id, bool concluida);
+        Tarefa AtualizarTarefa(int id, TarefaAtualizacaoModel model);
         bool RemoverTarefa(int id);
     }
 }
